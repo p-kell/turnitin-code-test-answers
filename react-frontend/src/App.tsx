@@ -1,7 +1,6 @@
 import React, { ChangeEvent, FC, useState } from 'react';
 import './App.css';
 import { Membership } from './Type';
-import { User } from './Type';
 import { fetchMembers } from './Api';
 import { Button, Input, Modal, ModalBody, ModalHeader } from 'reactstrap';
 import turnitinLogo from './turnitin-logo.png';
@@ -25,7 +24,7 @@ const App: FC<any> = () => {
   }
 
   const closeDetailsModal = () => {
-    setActiveMembership();
+    setActiveMembership(undefined);
   }
 
   return (
@@ -66,8 +65,8 @@ const App: FC<any> = () => {
         }
         { activeMembership &&
           (
-            <Modal isOpen={!!activeMembership}>
-              <ModalHeader toggle={e => closeDetailsModal}>User Details</ModalHeader>
+            <Modal isOpen={!!activeMembership} toggle={closeDetailsModal}>
+              <ModalHeader toggle={closeDetailsModal}>User Details</ModalHeader>
               <ModalBody>
                 <div>
                   <p>Name: {activeMembership.user?.name}</p>
