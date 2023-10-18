@@ -1,6 +1,7 @@
 import React, { ChangeEvent, FC, useState } from 'react';
 import './App.css';
 import { Membership } from './Type';
+import { User } from './Type';
 import { fetchMembers } from './Api';
 import { Button, Input, Modal, ModalBody, ModalHeader } from 'reactstrap';
 import turnitinLogo from './turnitin-logo.png';
@@ -24,7 +25,7 @@ const App: FC<any> = () => {
   }
 
   const closeDetailsModal = () => {
-    setActiveMembership(undefined);
+    setActiveMembership();
   }
 
   return (
@@ -48,7 +49,7 @@ const App: FC<any> = () => {
               <tbody>
                   { memberships.filter(membership => !search
                     || membership.user?.name.toLowerCase().includes(search.toLowerCase())
-                    || membership.user?.email.includes(search))
+                    || membership.user?.email.toLowerCase().includes(search.toLowerCase()))
                     .map(membership => (
                       <tr key={membership.id}>
                         <td>{membership.user?.name}</td>
