@@ -21,12 +21,11 @@ public class MembershipService {
 
 
 	/**
-	 * Method to fetch all memberships with their associated user details included.
-	 * This method calls out to the php-backend service and fetches all memberships,
-	 * it then calls to fetch the user details for each user individually and
-	 * associates them with their corresponding membership.
-	 *
-	 * @return A CompletableFuture containing a fully populated MembershipList object.
+	 * findOneById method essentially replaces the fetchUser(member.getId) from previous method
+  	 * It will fetch one user by userID and returns that user.
+	 * The new fetchAllMembershipsWithUsers method will fetch all memberships once and fetch all users once,
+  	 * and will then iterate over memberships, use already fetched list of users to get linked by userId
+	 * @return A CompletableFuture of MembershipList with incluced users.
 	 */
 	
 	public CompletableFuture<User> findOneById(CompletableFuture<UserList> allUsers, String userId ) {
