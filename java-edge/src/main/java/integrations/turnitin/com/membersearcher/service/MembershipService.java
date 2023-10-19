@@ -28,32 +28,7 @@ public class MembershipService {
 	 *
 	 * @return A CompletableFuture containing a fully populated MembershipList object.
 	 */
-//	public CompletableFuture<MembershipList> fetchAllMembershipsWithUsers() {
-//		return membershipBackendClient.fetchMemberships()
-//				.thenCompose(members -> {
-//					CompletableFuture<?>[] userCalls = members.getMemberships().stream()
-//							.map(member -> membershipBackendClient.fetchUser(member.getUserId())
-//									.thenApply(member::setUser))
-//							.toArray(CompletableFuture<?>[]::new);
-//					return CompletableFuture.allOf(userCalls)
-//							.thenApply(nil -> members);
-//				});
-//	}
-
-//	public CompletableFuture<UserList> fetchAllUserss() {
-//		return membershipBackendClient.fetchUsers()
-//				.thenCompose(users -> {
-//					CompletableFuture<?>[] userCalls = users.getUsers().stream()
-//							.map(user -> membershipBackendClient.fetchUsers()
-//									.thenApply(UserList::getUsers))
-//							.toArray(CompletableFuture<?>[]::new);
-//					return CompletableFuture.allOf(userCalls)
-//							.thenApply(nil -> users);
-//				});
-//	}
-
-
-
+	
 	public CompletableFuture<User> findOneById(CompletableFuture<UserList> allUsers, String userId ) {
 		return allUsers.thenCompose(users -> users.getUsers().stream().filter(u -> Objects.equals(u.getId(), userId))
 				.map(CompletableFuture::completedFuture)
