@@ -21,12 +21,12 @@ There are three components within the application, each with a different purpose
 To orchestrate running all parts of this service, docker and docker compose are used. See https://docs.docker.com/desktop/ for information on installing docker if you do not have it already.
 
 # Tasks:
-* Currently the java-edge service is making an API call per membership to fetch the user details. Refactor the java-edge service to use the `/api.php/users` endpoint to fetch all the users in one request rather than fetching the users individually.
-  * Make sure to fix any broken tests.
-  * Make sure any docs are updated appropriately.
-  * The response from the java-edge service should not change.
-* Searching for members by email is currently case sensitive. Update the search in the react-frontend to be case insensitive.
-* The close (x) button on the user details modal doesn't currently function properly. Identify the problem and make the fix.
+* Currently the java-edge service is making an API call per membership to fetch the user details. Refactor the java-edge service to use the `/api.php/users` endpoint to fetch all the users in one request rather than fetching the users individually. (Fixed!)
+  * Make sure to fix any broken tests. (Tests are now running correctly with updated code)
+  * Make sure any docs are updated appropriately. (docs updated with completion notice beside tasks)
+  * The response from the java-edge service should not change. (the response does not change with updated code)
+* Searching for members by email is currently case sensitive. Update the search in the react-frontend to be case insensitive. (the search is now case insensitive)
+* The close (x) button on the user details modal doesn't currently function properly. Identify the problem and make the fix. (fixed the close button so that it is now functioning properly)
 
 # Setup
 
